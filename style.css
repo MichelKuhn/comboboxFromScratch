@@ -1,44 +1,78 @@
-.hidden {
-    display: none;
+.combobox {
+    display: flex;
+    flex-direction: row;
 }
 
-.input--textfield, .input--toggle-button{
-    position: relative;
-    padding: 10px;
+.list, .send {
+    display: inline-block;
 }
 .list {
     width: 150px;
+    height: 150px;
+}
+
+.list--top {
     position: relative;
-    border: 1px solid mediumblue;
+    overflow: hidden;
+    height: 150px;
+    background-color: white;
+}
+
+.list--text-input {
+    border: 1px solid lightsteelblue;
+    margin: 4px 0;
+    border-radius: 10px;
+    display: table;
+    padding: 0 0 0 5px;
 }
 
 .list--textfield {
-    width: 80%;
-    outline: 0;
-}
-
-.list--textfield:focus {
-    border: 2px solid lightsteelblue;
+    width: 85%;
+    border: none;
+    outline: none;
+    display: table-cell;
+    font-size: 0.6em;
+    vertical-align: middle;
 }
 
 .list--toggle-button {
-    border:1px solid transparent;
-    vertical-align: middle;
-    outline: 0;
     cursor: pointer;
-    content: "X";
-    display: inline-block;
-    width: 15px;
-    height: 15px;
+    display: table-cell;
+    width: 15%;
     background-color: mediumblue;
-    right: 35px;
-    top: 0;
-    bottom: 0;
-    margin: auto;
     border-radius: 50%;
-    text-align: center;
-    color: white;
-    font-weight: normal;
-    font-size: 12px;
     box-shadow: 0 0 2px midnightblue;
+}
+
+.list--content {
+    margin: 40px 0 0 0;
+    padding: 0;
+    list-style-type: none;
+    position: absolute;
+    z-index: -1;
+}
+
+.list--content > li {
+    border: 1px solid lightsteelblue;
+    margin: 4px 0;
+    border-radius: 10px;
+    font-size: 0.6em;
+}
+
+.send {
+    display: table;
+}
+
+.send--button, .send--error-field {
+    display: table-cell;
+}
+
+.send--button {
+    font-size: 0.6em;
+}
+
+.send--error-field > p {
+    color: red;
+    margin: 0 0 0 15px;
+    font-size: 0.6em;
 }

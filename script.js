@@ -1,18 +1,18 @@
 function displayError(text) {
-    errorElement = document.getElementById("errorField");
-    let item = document.createElement("li");
+    let errorElement = document.getElementById("errorField");
+    let item = document.createElement("p");
     item.appendChild(document.createTextNode(text));
     errorElement.appendChild(item);
 }
 
 function clearErrorField() {
-    errorElement = document.getElementById("errorField");
+    let errorElement = document.getElementById("errorField");
     errorElement.innerHTML = "";
 }
 
 function validateTextInput(input) {
     clearErrorField();
-    let letterRegex = RegExp("^[a-zA-Z]+$");
+    let letterRegex = /^[a-zA-Z]+$/;
     if (input.length < 2) {
         displayError("Text zu kurz");
         return false;
@@ -35,10 +35,11 @@ function addItem() {
 }
 
 function toggleList() {
-    let listElement = document.getElementById("list");
-    if (listElement.className.includes("hidden")) {
-        listElement.className = listElement.className.replace(" hidden", "");
+    let element = document.getElementById("listTop");
+    if (element.style.height === "30px") {
+        element.style.height = "150px";
     } else {
-        listElement.className += " hidden";
+        element.style.height = "30px";
     }
+
 }
