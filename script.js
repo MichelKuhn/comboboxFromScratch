@@ -1,8 +1,17 @@
+function validateTextInput(input) {
+    let letterRegex = RegExp("^[a-zA-Z]+$");
+    console.log(letterRegex.test(input));
+    return (input.length > 1 && letterRegex.test(input));
+}
+
 function addItem() {
-    let listElement = document.getElementById("list");
-    let item = document.createElement("li");
-    item.appendChild(document.createTextNode(document.getElementById("input").value));
-    listElement.appendChild(item);
+    let value = document.getElementById("input").value;
+    if (validateTextInput(value)) {
+        let listElement = document.getElementById("list");
+        let item = document.createElement("li");
+        item.appendChild(document.createTextNode(value));
+        listElement.appendChild(item);
+    }
 }
 
 function toggleList() {

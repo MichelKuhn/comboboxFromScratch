@@ -1,3 +1,44 @@
 .hidden {
-    visibility: hidden;
+    display: none;
+}
+
+.input--textfield, .input--toggle-button{
+    position: relative;
+    padding: 10px;
+}
+.list {
+    width: 150px;
+    position: relative;
+    border: 1px solid mediumblue;
+}
+
+.list--textfield {
+    width: 80%;
+    outline: 0;
+}
+
+.list--textfield:focus {
+    border: 2px solid lightsteelblue;
+}
+
+.list--toggle-button {
+    border:1px solid transparent;
+    vertical-align: middle;
+    outline: 0;
+    cursor: pointer;
+    content: "X";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-color: mediumblue;
+    right: 35px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+    font-weight: normal;
+    font-size: 12px;
+    box-shadow: 0 0 2px midnightblue;
 }
