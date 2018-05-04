@@ -1,7 +1,27 @@
+function displayError(text) {
+    errorElement = document.getElementById("errorField");
+    let item = document.createElement("li");
+    item.appendChild(document.createTextNode(text));
+    errorElement.appendChild(item);
+}
+
+function clearErrorField() {
+    errorElement = document.getElementById("errorField");
+    errorElement.innerHTML = "";
+}
+
 function validateTextInput(input) {
+    clearErrorField();
     let letterRegex = RegExp("^[a-zA-Z]+$");
-    console.log(letterRegex.test(input));
-    return (input.length > 1 && letterRegex.test(input));
+    if (input.length < 2) {
+        displayError("Text zu kurz");
+        return false;
+    } else if (!letterRegex.test(input)) {
+        displayError("Text darf nur Buchstaben enthalten");
+        return false;
+    } else {
+        return true;
+    }
 }
 
 function addItem() {
