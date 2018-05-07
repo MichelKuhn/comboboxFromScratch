@@ -10,14 +10,9 @@
 <label class="label">Combobox</label>
     <div class="combobox">
         <div class="list">
-            <ul id="list" class="list--content">
-                <li>Test</li>
-                <li>Test</li>
-                <li>Test</li>
-            </ul>
             <div id="listTop" class="list--top">
                 <div class="list--text-input">
-                    <input id="input" type="text" class="list--textfield" placeholder="Text">
+                    <input id="input" type="text" class="list--textfield" oninput="validateTextInput(this.value)" placeholder="Text">
                     <div class="list--toggle-button" onclick="toggleList()"></div>
                 </div>
             </div>
@@ -26,6 +21,11 @@
             <button onclick="addItem()" class="send--button">Add</button>
             <div id="errorField" class="send--error-field"></div>
         </div>
+        <ul id="listContent" class="list--content list--content--closed">
+            <li>Test</li>
+            <li>Test</li>
+            <li>Test</li>
+        </ul>
     </div>
 </body>
 </html>

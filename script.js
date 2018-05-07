@@ -27,7 +27,7 @@ function validateTextInput(input) {
 function addItem() {
     let value = document.getElementById("input").value;
     if (validateTextInput(value)) {
-        let listElement = document.getElementById("list");
+        let listElement = document.getElementById("listContent");
         let item = document.createElement("li");
         item.appendChild(document.createTextNode(value));
         listElement.appendChild(item);
@@ -35,14 +35,10 @@ function addItem() {
 }
 
 function toggleList() {
-    let element = document.getElementById("listTop");
-    if (element.className.includes("list--top--open")) {
-        element.className = element.className.replace("list--top--open", "list--top--closed");
+    let element = document.getElementById("listContent");
+    if (element.className.includes("list--content--open")) {
+        element.className = element.className.replace("list--content--open", "list--content--closed");
     } else {
-        //Zu Beginn hat das Element keinen der beiden Styles
-        if(element.className === "list--top") {
-            element.className += " list--top--open";
-        }
-        element.className = element.className.replace("list--top--closed", "list--top--open");
+        element.className = element.className.replace("list--content--closed", "list--content--open");
     }
 }

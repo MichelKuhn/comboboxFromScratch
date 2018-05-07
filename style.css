@@ -1,13 +1,3 @@
-@keyframes closeList {
-    from {height: 30px;}
-    to {height: 150px;}
-}
-
-@keyframes openList {
-    from {height: 150px;}
-    to {height: 30px;}
-}
-
 .combobox {
     display: flex;
     flex-direction: row;
@@ -23,8 +13,6 @@
 
 .list--top {
     position: relative;
-    overflow: hidden;
-    height: 150px;
     background-color: white;
 }
 
@@ -59,8 +47,10 @@
     padding: 0;
     list-style-type: none;
     position: absolute;
-    z-index: -1;
     width: 140px;
+    overflow: hidden;
+    max-height: 60px; /* 30px x 3 */
+    overflow-y: auto;
 }
 
 .list--content > li {
@@ -69,19 +59,17 @@
     padding-left: 4px;
     border-radius: 10px;
     font-size: 0.6em;
-    width: 100%;
+    height: 12px;
 }
 
-.list--top--open {
-    height: 30px;
-    animation-name: openList;
-    animation-duration: 1s;
-}
-
-.list--top--closed {
+.list--content--open {
     height: 150px;
-    animation-name: closeList;
-    animation-duration: 1s;
+    transition: .5s;
+}
+
+.list--content--closed {
+    height: 1px;
+    transition: .5s;
 }
 
 .send {
