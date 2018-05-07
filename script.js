@@ -36,10 +36,13 @@ function addItem() {
 
 function toggleList() {
     let element = document.getElementById("listTop");
-    if (element.style.height === "30px") {
-        element.style.height = "150px";
+    if (element.className.includes("list--top--open")) {
+        element.className = element.className.replace("list--top--open", "list--top--closed");
     } else {
-        element.style.height = "30px";
+        //Zu Beginn hat das Element keinen der beiden Styles
+        if(element.className === "list--top") {
+            element.className += " list--top--open";
+        }
+        element.className = element.className.replace("list--top--closed", "list--top--open");
     }
-
 }
