@@ -65,6 +65,12 @@ function addItem() {
     let value = inputField.value;
     inputField.value = '';
     if (validateTextInput(value)) {
+        let listElements = getListElements();
+        for (var element of listElements) {
+            if (element.id === value) {
+                return;
+            }
+        }
         let listElement = document.getElementById("listContent");
         let item = document.createElement("li");
         item.id = value;
@@ -91,11 +97,9 @@ function userTypes() {
     let inputValue = inputField.value;
 
     let listElements = getListElements();
-    if (inputValue.length > 1) {
-        for (var element of listElements) {
-            if (!element.id.toUpperCase().includes(inputValue.toUpperCase())) {
-                element.style.display = "none";
-            }
+    for (var element of listElements) {
+        if (!element.id.toUpperCase().includes(inputValue.toUpperCase())) {
+            element.style.display = "none";
         }
     }
 
