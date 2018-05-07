@@ -12,11 +12,9 @@
         <div class="list">
             <div id="listTop" class="list--top">
                 <div class="list--text-input">
-                    <input id="input" type="text" class="list--textfield" oninput="userTypes()" list="autocompleteSuggestions" placeholder="Text">
+                    <input id="input" type="text" class="list--textfield" oninput="userTypes()" placeholder="Text">
                     <div class="list--toggle-button" onclick="toggleList()"></div>
                 </div>
-                <datalist id="autocompleteSuggestions">
-                </datalist>
             </div>
         </div>
         <div class="send">
@@ -24,9 +22,9 @@
             <div id="errorField" class="send--error-field"></div>
         </div>
         <ul id="listContent" class="list--content list--content--closed">
-            <li>Some</li>
-            <li>Sample</li>
-            <li>Elements</li>
+            <li id="Some" onclick="clickElement(this.id)">Some</li>
+            <li id="Sample" onclick="clickElement(this.id)">Sample</li>
+            <li id="Elements" onclick="clickElement(this.id)">Elements</li>
         </ul>
     </div>
 </body>

@@ -15,27 +15,9 @@ function checkKey(e) {
     }
 }
 
-/* Stackoverlfow https://stackoverflow.com/questions/2793688/how-do-i-put-unordered-list-items-into-an-array */
-function map(arrayLike, fn) {
-    let ret = [], i = -1, len = arrayLike.length;
-    while (++i < len) ret[i] = fn(arrayLike[i]);
-    return ret;
-}
-
-function getNodeText(node) {
-    if (node.nodeType === 3) return node.data;
-    let txt = '';
-    if (node = node.firstChild) do {
-        txt += getNodeText(node);
-    } while (node = node.nextSibling);
-    return txt;
-}
-/* --------------------------------------------------------------------------------------------------------- */
-
-function getListELementsAsArray() {
+function getListElements() {
     let listElement = document.getElementById('listContent');
-    let listItems = listElement.getElementsByTagName('li');
-    return map(listItems, getNodeText);
+    return listElement.getElementsByTagName('li');
 }
 
 function displayError(text) {
@@ -64,6 +46,20 @@ function validateTextInput(input) {
     }
 }
 
+function resetListView() {
+    let listItems = getListElements();
+    for (item of listItems) {
+        item.style.display = "list-item";
+    }
+}
+
+function clickElement(id) {
+    let inputField = document.getElementById("input");
+    resetListView();
+    inputField.value = id;
+    document.getElementById(id).style.display = "none";
+}
+
 function addItem() {
     let inputField = document.getElementById("input");
     let value = inputField.value;
@@ -71,6 +67,10 @@ function addItem() {
     if (validateTextInput(value)) {
         let listElement = document.getElementById("listContent");
         let item = document.createElement("li");
+        item.id = value;
+        item.onclick = function () {
+            clickElement(item.id);
+        };
         item.appendChild(document.createTextNode(value));
         listElement.appendChild(item);
     }
@@ -86,19 +86,15 @@ function toggleList() {
 }
 
 function userTypes() {
+    resetListView();
     let inputField = document.getElementById("input");
     let inputValue = inputField.value;
-    let listEntries = getListELementsAsArray();
-    let autocompleteOptions = document.getElementById("autocompleteSuggestions");
-    autocompleteOptions.innerHTML = '';
 
-    console.log(inputValue.length);
+    let listElements = getListElements();
     if (inputValue.length > 1) {
-        for (var x of listEntries) {
-            if (x.toUpperCase().includes(inputValue.toUpperCase())) {
-                var option = document.createElement("option");
-                option.text = x;
-                autocompleteOptions.appendChild(option);
+        for (var element of listElements) {
+            if (!element.id.toUpperCase().includes(inputValue.toUpperCase())) {
+                element.style.display = "none";
             }
         }
     }
