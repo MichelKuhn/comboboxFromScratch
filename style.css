@@ -49,7 +49,7 @@
     position: absolute;
     width: 140px;
     overflow: hidden;
-    max-height: 60px; /* 30px x 3 */
+    max-height: 100px;
     overflow-y: auto;
 }
 
