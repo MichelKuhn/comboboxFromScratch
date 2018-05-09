@@ -12,7 +12,7 @@
         <div class="list">
             <div id="listTop" class="list--top">
                 <div class="list--text-input">
-                    <input id="input" type="text" class="list--textfield" oninput="userTypes()" placeholder="Text">
+                    <input id="input" type="text" class="list--textfield" oninput="userTypes()" onblur="closeList()" placeholder="Text">
                     <div class="list--toggle-button" onclick="toggleList()"></div>
                 </div>
             </div>
@@ -25,6 +25,7 @@
             <li id="Some" onclick="clickElement(this.id)">Some</li>
             <li id="Sample" onclick="clickElement(this.id)">Sample</li>
             <li id="Elements" onclick="clickElement(this.id)">Elements</li>
+            <li id="Zebra" onclick="clickElement(this.id)">Zebra</li>
         </ul>
     </div>
 </body>

@@ -64,12 +64,12 @@
 
 .list--content--open {
     height: 150px;
-    transition: .5s;
+    transition: .3s;
 }
 
 .list--content--closed {
     height: 1px;
-    transition: .5s;
+    transition: .3s;
 }
 
 .send {

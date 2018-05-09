@@ -2,16 +2,11 @@ document.onkeydown = checkKey;
 
 function checkKey(e) {
     e = e || window.event;
-    let element = document.getElementById("listContent");
 
     if (e.keyCode == '38') {            //UP
-        if (element.className.includes("list--content--open")) {
-            element.className = element.className.replace("list--content--open", "list--content--closed");
-        }
+        closeList();
     } else if (e.keyCode == '40') {    //DOWN
-        if (element.className.includes("list--content--closed")) {
-            element.className = element.className.replace("list--content--closed", "list--content--open");
-        }
+        openList();
     }
 }
 
@@ -66,7 +61,7 @@ function addItem() {
     inputField.value = '';
     if (validateTextInput(value)) {
         let listElements = getListElements();
-        for (var element of listElements) {
+        for (let element of listElements) {
             if (element.id === value) {
                 return;
             }
@@ -82,6 +77,20 @@ function addItem() {
     }
 }
 
+function closeList() {
+    let listElement = document.getElementById("listContent");
+    if (listElement.className.includes("list--content--open")) {
+        listElement.className = listElement.className.replace("list--content--open", "list--content--closed");
+    }
+}
+
+function openList() {
+    let listElement = document.getElementById("listContent");
+    if (listElement.className.includes("list--content--closed")) {
+        listElement.className = listElement.className.replace("list--content--closed", "list--content--open");
+    }
+}
+
 function toggleList() {
     let element = document.getElementById("listContent");
     if (element.className.includes("list--content--open")) {
@@ -93,13 +102,18 @@ function toggleList() {
 
 function userTypes() {
     resetListView();
+    openList();
+
     let inputField = document.getElementById("input");
     let inputValue = inputField.value;
 
     let listElements = getListElements();
-    for (var element of listElements) {
-        if (!element.id.toUpperCase().includes(inputValue.toUpperCase())) {
-            element.style.display = "none";
+    for (let element of listElements) {
+        let i = inputValue.length;
+        while (i--) {
+            if (!element.id.toUpperCase().includes(inputValue.charAt(i).toUpperCase())) {
+                element.style.display = "none";
+            }
         }
     }
 
